@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 23:11:37 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/21 03:41:55 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/21 03:57:04 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ void	ft_list_swap(t_list **l)
 	t_list	*tmp;
 
 	tmp = (*l)->next->next;
-	*l = (*l)->next;
+	(*l)->next->next = (*l);
 	(*l)->next = tmp;
+
 }
 
 void	ft_list_sort(t_list **begin_list, int (*cmp)(void*, void*))
