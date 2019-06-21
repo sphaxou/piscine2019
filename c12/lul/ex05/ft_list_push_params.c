@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 17:56:38 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/20 18:16:51 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/21 02:41:25 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_list *ft_list_push_params(int ac, char **av)
 	i = 1;
 	start = ft_create_elem(av[ac - i++]);
 	list = start;
-	while (ac - i)
+	while (ac - i >= 0)
 	{
 		list->next = ft_create_elem(av[ac - i++]);
 		list = list->next;
