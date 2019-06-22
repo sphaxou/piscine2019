@@ -6,7 +6,7 @@
 #    By: vgallois <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/11 17:57:56 by vgallois          #+#    #+#              #
-#    Updated: 2019/06/22 20:18:21 by vgallois         ###   ########.fr        #
+#    Updated: 2019/06/22 21:13:25 by vgallois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME			= rush-02
 SRCS			= $(shell ls | grep -E "ft_.+\.c") \
 				  finddict.c\
 				  printnumber.c\
+				  parse.c\
 				  main.c
 CC				= gcc
 FLAGS			= -Wall -Werror -Wextra
