@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 02:29:28 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/23 05:25:48 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/23 06:36:05 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int		zelda(char *s, t_car *car)
 		return (0);
 	return (1);
 }
-#include <stdio.h>
+
 int	**parse(char *file, t_car *car, int *h, int *l)
 {
 	int	**map;
@@ -123,7 +123,6 @@ int	**parse(char *file, t_car *car, int *h, int *l)
 	navi = link;
 	while (s[link++] != '\n')
 		*l += 1;
-	printf("h = %d, l = %d\n", *h, *l);
 	map = splitint(s + navi, *car, *h, *l);
 	return (map);
 }

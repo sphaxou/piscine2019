@@ -6,11 +6,12 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 02:23:30 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/23 06:14:47 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/23 06:36:33 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
+#include <stdlib.h>
 
 int	value(int **map, int i, int j)
 {
@@ -63,6 +64,16 @@ void	solve(int **map, int h, int l, t_max *max)
 	max->value = map[max->i][max->j];
 }
 
+void	clean(int **tab, int h)
+{
+	int		i;
+
+	i = 0;
+	while (i < h)
+		free(tab[i++]);
+	free(tab);
+}
+
 int		bsq(char *s)
 {
 	int		h;
@@ -74,12 +85,12 @@ int		bsq(char *s)
 	h = 0;
 	l = 0;
 	tab = parse(s, &car, &h, &l);
-	ft_putstr("parse ok\n");
 	if (!tab)
 		return (0);
 	solve(tab, h, l, &max);
 	max.l = l;
 	max.h = h;
 	printtab(tab, car, max);
+	clean(tab, h);
 	return (1);
 }
