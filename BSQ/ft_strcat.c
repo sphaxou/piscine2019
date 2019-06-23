@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/23 02:21:46 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/23 06:26:34 by vgallois         ###   ########.fr       */
+/*   Created: 2019/06/07 12:53:43 by vgallois          #+#    #+#             */
+/*   Updated: 2019/06/07 16:32:35 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
- #include <time.h>
-
-int main(int ac, char **av)
+char	*ft_strcat(char *s1, char *s2)
 {
-	int i;
-	 clock_t start, end;
-	      double cpu_time_used;
-		       
-		       start = clock();
+	int	i;
+	int	j;
 
-	if (ac == 1)
+	i = 0;
+	j = 0;
+	while (s1[i])
+		i++;
+	while (s2[j])
 	{
-		ft_putstr_fd("No argument\n", 2);
-		return (0);
+		s1[i + j] = s2[j];
+		j++;
 	}
-	i = 1;
-	while (i < ac)
-	{
-		bsq(av[i++]);
-		if (i != ac)
-			ft_putstr("\n");
-	}
-	end = clock();
-	     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-	return (0);
+	s1[i + j] = '\0';
+	return (s1);
 }

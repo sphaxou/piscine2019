@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 02:29:28 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/23 03:37:37 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/23 05:25:48 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ int		zelda(char *s, t_car *car)
 	car->obs = s[link++];
 	car->plein = s[link++];
 	l = 0;
-	h = 0;
+	h = -1;
+	l1 = 0;
 	while (s[link])
 	{
 		if (s[link] == '\n')
@@ -90,7 +91,7 @@ int		zelda(char *s, t_car *car)
 			l = 0;
 			h++;
 		}
-		if (!(s[link] == car->vide || s[link] == car->obs))
+		if (!(s[link] == car->vide || s[link] == car->obs || s[link] == '\n'))
 			return (0);
 		l++;
 		link++;
@@ -99,16 +100,17 @@ int		zelda(char *s, t_car *car)
 		return (0);
 	return (1);
 }
-
-char	**parse(char *file, t_car *car, int *h, int *l)
+#include <stdio.h>
+int	**parse(char *file, t_car *car, int *h, int *l)
 {
-	char	**map;
+	int	**map;
 	char	*s;
 	int		link;
+	int		navi;
 
 	link = 0;
 	s = read_file(file);
-	if (!s || !zelda(s))
+	if (!s || zelda(s, car) != 1)
 	{
 		if (s)
 			ft_putstr_fd("map error\n", 2);
@@ -117,9 +119,11 @@ char	**parse(char *file, t_car *car, int *h, int *l)
 	*h = ft_atoi(s);
 	while (ft_is_num(s[link]))
 		link++;
-	link++;
-	map = ft_split(s + link, "\n");
+	link = link + 4;
+	navi = link;
 	while (s[link++] != '\n')
-		*l++;
+		*l += 1;
+	printf("h = %d, l = %d\n", *h, *l);
+	map = splitint(s + navi, *car, *h, *l);
 	return (map);
 }
