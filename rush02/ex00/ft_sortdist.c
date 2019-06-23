@@ -6,7 +6,7 @@
 /*   By: maspiewa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 00:06:12 by maspiewa          #+#    #+#             */
-/*   Updated: 2019/06/23 02:13:22 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/23 14:01:07 by mciupek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	sort_ascii(t_dict *dict)
 				&& ft_strcmp(dict[i].number, dict[i + 1].number) > 0)
 			{
 				tmp = dict[i];
-				dict[i] = dict[i+ 1];
+				dict[i] = dict[i + 1];
 				dict[i + 1] = tmp;
 				sort = 0;
 			}

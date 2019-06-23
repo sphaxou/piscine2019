@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 19:37:13 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/23 00:38:49 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/23 13:01:50 by mciupek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_dict	findexposant(int len, t_dict *dict)
 {
 	int ires;
 	int i;
-	
+
 	i = 0;
 	ires = 0;
 	while (dict[i].len)

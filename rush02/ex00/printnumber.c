@@ -6,12 +6,21 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 19:08:44 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/23 01:32:26 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/23 20:12:51 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
-#include <stdio.h>
+
+void	printdict(char *s, t_dict dict)
+{
+	if (s[0] != '0')
+	{
+		ft_putstr(dict.str);
+		if (*(s + 1))
+			ft_putstr(" ");
+	}
+}
 
 void	printnumber(char *s, int len, t_dict *dict)
 {
@@ -22,34 +31,18 @@ void	printnumber(char *s, int len, t_dict *dict)
 	tmp = finddict(s, len, len, dict);
 	if (tmp.len)
 	{
-		if (s[0] != '0')
-		{
-			ft_putstr(tmp.str);
-			if (*(s + 1))
-				ft_putstr(" ");
-		}
-			return ;
+		printdict(s, tmp);
+		return ;
 	}
 	tmp = findclosest(s, len, dict);
 	if (tmp.len == 2)
 	{
-		if (s[0] != '0')
-		{
-			ft_putstr(tmp.str);
-			if (*(s + 1))
-				ft_putstr(" ");
-		}
+		printdict(s, tmp);
 		printnumber(s + 1, len - 1, dict);
 		return ;
 	}
-	//printf("start rec\ns: %s\n", s);
 	tmp = findexposant(len, dict);
 	printnumber(s, len - tmp.len + 1, dict);
-	if (s[0] != '0')
-	{
-		ft_putstr(tmp.str);
-		if (*(s + 1))
-			ft_putstr(" ");
-	}
+	printdict(s, tmp);
 	printnumber(s + (len - tmp.len + 1), tmp.len - 1, dict);
 }

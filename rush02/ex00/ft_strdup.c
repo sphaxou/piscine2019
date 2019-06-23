@@ -6,7 +6,7 @@
 /*   By: mciupek <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 12:25:10 by mciupek           #+#    #+#             */
-/*   Updated: 2019/06/19 21:26:31 by mciupek          ###   ########.fr       */
+/*   Updated: 2019/06/23 13:59:50 by mciupek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strcpy(char *dest, char *src, char *stop)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (src[i] != stop[0] && src[i] != stop[1])
@@ -28,12 +28,12 @@ char	*ft_strcpy(char *dest, char *src, char *stop)
 
 char	*ft_mystrdup(char *src, char *sep)
 {
-	char *tab;
-    int  len;
-    
-    len = 0;
-    while (src[len] != sep[0] && src[len] != sep[1])
-        len++;
+	char	*tab;
+	int		len;
+
+	len = 0;
+	while (src[len] != sep[0] && src[len] != sep[1])
+		len++;
 	tab = (char*)malloc(sizeof(*src) * (len + 1));
 	if (tab != NULL)
 	{

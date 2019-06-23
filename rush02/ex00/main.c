@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 18:35:01 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/23 02:11:58 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/23 20:37:21 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,26 @@ int	main(int ac, char **av)
 	t_dict	*dict;
 	char	*s;
 
-	if (ac == 1)
+	if (ac != 2)
 	{
 		ft_putstr("Error\n");
-		return (1);
-	}
-	if (ac > 2)
 		return (0);
-	s = av[1];
-	dict = parse("numbers.dict");
-	int i = 0;
-	while (dict[i].len != 0)
-	{
-		printf("%s %s\n", dict[i].number, dict[i].str);
-		i++;
 	}
-	printf("parse ok\n");
+	if (!(s = ft_myatoi(av[1])))
+		return (0);
+	if (!ft_checkparams(ac, s))
+		return (0);
+	if (!(dict = parse("numbers.dict")))
+		return (0);
 	sortdict(dict);
-	i = 0;
-	while (dict[i].len != 0)
-	{
-		printf("%s %s\n", dict[i].number, dict[i].str);
-		i++;
-	}
-	printf("sort ok\n");
-	printnumber(s, ft_strlen(s), dict);
+	if (!ft_strcmp(s, "0"))
+		ft_putstr(dict[0].str);
+	else if (!s)
+		ft_putstr("Error");
+	else
+		printnumber(s, ft_strlen(s), dict);
 	ft_putstr("\n");
-	//cleanmem(dict);
+	ft_cleanmem(&dict);
+	printf("%p\n", dict[0].str);
 	return (0);
 }
