@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sorted_list_insert.c                            :+:      :+:    :+:   */
+/*   ft_list_reverse_fun.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/21 16:20:08 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/24 04:05:32 by vgallois         ###   ########.fr       */
+/*   Created: 2019/06/24 03:44:24 by vgallois          #+#    #+#             */
+/*   Updated: 2019/06/24 03:50:47 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
+#include <stdio.h>
 
-void ft_sorted_list_insert(t_list **start, void *data, int (*cmp)(void*, void*))
+void	ft_list_reverse_fun(t_list *begin_list)
 {
-	t_list	*new;
-	t_list	*list;
+	t_list	*tmp;
+	t_list	*cur;
+	t_list	*prev;
 
-	new = ft_create_elem(data);
-	list = (*start);
-	if (cmp(new->data, list->data) <= 0)
+	prev = NULL;
+	cur = begin_list;
+	while (cur->next)
 	{
-		new->next = list;
-		*start = new;
-		return ;
+		tmp = cur->next;
+		cur->next = prev;
+		prev = cur;
+		cur = tmp;
 	}
-	while (list->next && cmp(new->data, list->next->data) > 0)
-		list = list->next;
-	new->next = list->next;
-	list->next = new;
-}		
+}

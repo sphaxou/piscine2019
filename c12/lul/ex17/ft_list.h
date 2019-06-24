@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sorted_list_insert.c                            :+:      :+:    :+:   */
+/*   ft_list.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/21 16:20:08 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/24 04:05:32 by vgallois         ###   ########.fr       */
+/*   Created: 2019/06/20 17:13:43 by vgallois          #+#    #+#             */
+/*   Updated: 2019/06/20 17:52:31 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#ifndef FT_LIST_H
+# define FT_LIST_H
 
-void ft_sorted_list_insert(t_list **start, void *data, int (*cmp)(void*, void*))
+typedef struct s_list
 {
-	t_list	*new;
-	t_list	*list;
+	struct s_list *next;
+	void *data;
+} t_list;
 
-	new = ft_create_elem(data);
-	list = (*start);
-	if (cmp(new->data, list->data) <= 0)
-	{
-		new->next = list;
-		*start = new;
-		return ;
-	}
-	while (list->next && cmp(new->data, list->next->data) > 0)
-		list = list->next;
-	new->next = list->next;
-	list->next = new;
-}		
+t_list *ft_create_elem(void *data);
+
+#endif
