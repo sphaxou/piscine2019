@@ -6,14 +6,14 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 21:35:47 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/21 02:24:53 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/25 08:12:49 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 #include <stdlib.h>
 
-void ft_list_reverse(t_list **start)
+void	ft_list_reverse(t_list **start)
 {
 	t_list	*tmp;
 	t_list	*next;
@@ -29,4 +29,4 @@ void ft_list_reverse(t_list **start)
 		tmp = next;
 	}
 	*start = prev;
-}		
+}

@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 02:21:46 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/23 06:48:16 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/25 23:47:38 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ int main(int ac, char **av)
 	int i;
 
 	if (ac == 1)
-	{
-		ft_putstr_fd("No argument\n", 2);
-		return (0);
-	}
+		return (readinput());
 	i = 1;
 	while (i < ac)
 	{

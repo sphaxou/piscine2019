@@ -6,15 +6,14 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 23:11:37 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/22 17:57:49 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/25 08:15:30 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 #include <stdio.h>
 
-void	ft_list_insert_sort(t_list **list, t_list *elem,
-		int (*cmp)(void*, void*))
+void	ft_list_insert_sort(t_list **list, t_list *elem, int (*cmp)())
 {
 	t_list	*tmp;
 
@@ -37,7 +36,7 @@ void	ft_list_insert_sort(t_list **list, t_list *elem,
 	}
 }
 
-void	ft_list_sort(t_list **start, int (*cmp)(void*, void*))
+void	ft_list_sort(t_list **start, int (*cmp)())
 {
 	t_list	*list;
 	t_list	*tmp;
@@ -46,7 +45,7 @@ void	ft_list_sort(t_list **start, int (*cmp)(void*, void*))
 	list = *start;
 	tmp = list->next;
 	list->next = NULL;
-	while(tmp)
+	while (tmp)
 	{
 		tmp2 = tmp->next;
 		ft_list_insert_sort(&list, tmp, cmp);

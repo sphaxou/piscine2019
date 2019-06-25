@@ -6,13 +6,13 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 17:56:38 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/21 02:41:25 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/25 08:11:39 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-t_list *ft_list_push_params(int ac, char **av)
+t_list	*ft_list_push_params(int ac, char **av)
 {
 	int		i;
 	t_list	*start;

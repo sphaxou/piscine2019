@@ -6,13 +6,13 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 17:37:12 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/21 02:25:57 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/25 08:14:24 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-void	 ft_list_push_front(t_list **list, void *data)
+void	ft_list_push_front(t_list **list, void *data)
 {
 	t_list	*new;
 
@@ -21,4 +21,4 @@ void	 ft_list_push_front(t_list **list, void *data)
 		return ;
 	new->next = *list;
 	*list = new;
-}	
+}

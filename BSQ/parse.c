@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 02:29:28 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/24 22:07:34 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/26 00:22:16 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,14 +103,13 @@ int		zelda(char *s, t_car *car)
 
 int	**parse(char *file, t_car *car, int *h, int *l)
 {
-	int	**map;
+	int		**map;
 	char	*s;
 	int		link;
 	int		navi;
 
 	link = 0;
 	s = read_file(file);
-	ft_putstr("read ok\n");
 	if (!s || zelda(s, car) != 1)
 	{
 		if (s)

@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 18:17:28 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/21 02:50:07 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/25 07:52:53 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void	ft_list_clear(t_list **start)
+void	ft_list_clear(t_list **start, void (*free_fct)(void *))
 {
 	t_list *tmp;
 	t_list *tmp2;
@@ -23,6 +23,8 @@ void	ft_list_clear(t_list **start)
 	while (tmp)
 	{
 		tmp2 = tmp->next;
+		free_fct(tmp->data);
+		free(tmp);
 		tmp = tmp2;
 	}
 	*start = NULL;

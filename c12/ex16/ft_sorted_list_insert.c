@@ -6,20 +6,21 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 16:20:08 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/24 04:05:32 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/25 08:16:09 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-void ft_sorted_list_insert(t_list **start, void *data, int (*cmp)(void*, void*))
+void	ft_sorted_list_insert(t_list **start, void *data,
+		int (*cmp)(void*, void*))
 {
 	t_list	*new;
 	t_list	*list;
 
 	new = ft_create_elem(data);
 	list = (*start);
-	if (cmp(new->data, list->data) <= 0)
+	if (!(*start) || cmp(new->data, list->data) <= 0)
 	{
 		new->next = list;
 		*start = new;
@@ -29,4 +30,4 @@ void ft_sorted_list_insert(t_list **start, void *data, int (*cmp)(void*, void*))
 		list = list->next;
 	new->next = list->next;
 	list->next = new;
-}		
+}

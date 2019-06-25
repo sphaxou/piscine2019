@@ -6,13 +6,13 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 23:09:17 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/21 03:31:35 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/25 08:14:04 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-void ft_list_merge(t_list **list1, t_list *list2)
+void	ft_list_merge(t_list **list1, t_list *list2)
 {
 	t_list	*cur;
 

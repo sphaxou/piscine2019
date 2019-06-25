@@ -6,13 +6,13 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 17:41:19 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/21 02:25:13 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/25 08:11:14 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-int ft_list_size(t_list *begin_list)
+int	ft_list_size(t_list *begin_list)
 {
 	int		i;
 	t_list	*tmp;

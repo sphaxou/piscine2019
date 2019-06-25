@@ -6,11 +6,11 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 14:27:37 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/11 14:32:12 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/26 00:23:06 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
+#include "ft.h"
 
 void	ft_putstr(char *str)
 {
