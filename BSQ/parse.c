@@ -6,12 +6,12 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 02:29:28 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/23 06:36:05 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/24 22:07:34 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
-#define BUFF_SIZE 1
+#define BUFF_SIZE 50000
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -110,6 +110,7 @@ int	**parse(char *file, t_car *car, int *h, int *l)
 
 	link = 0;
 	s = read_file(file);
+	ft_putstr("read ok\n");
 	if (!s || zelda(s, car) != 1)
 	{
 		if (s)
