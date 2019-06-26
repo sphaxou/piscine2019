@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 04:06:19 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/25 08:16:34 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/26 11:07:05 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	insert(t_list **start, t_list *new, int (*cmp)(void*, void*))
 	t_list	*list;
 
 	list = (*start);
-	if (cmp(new->data, list->data) <= 0)
+	if (!(*start) || cmp(new->data, list->data) <= 0)
 	{
 		new->next = list;
 		*start = new;
@@ -29,8 +29,7 @@ void	insert(t_list **start, t_list *new, int (*cmp)(void*, void*))
 	list->next = new;
 }
 
-void	ft_sorted_list_merge(t_list **list1, t_list *list2,
-		int (*cmp)(void*, void*))
+void	ft_sorted_list_merge(t_list **list1, t_list *list2, int (*cmp)())
 {
 	t_list	*tmp;
 

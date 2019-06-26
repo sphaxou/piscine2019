@@ -6,7 +6,7 @@
 /*   By: mciupek <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 01:22:02 by mciupek           #+#    #+#             */
-/*   Updated: 2019/06/23 20:34:09 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/23 22:50:07 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,7 @@ char	*ft_myatoi(char *str)
 		if (!(i % 4))
 		{
 			if (str[len - i] != sep)
-			{
-				ft_putstr("Error\n");
 				return (NULL);
-			}
 			j = len - i - 1;
 			while (str[++j])
 				str[j] = str[j + 1];

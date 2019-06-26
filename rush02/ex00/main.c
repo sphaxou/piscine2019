@@ -6,29 +6,55 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 18:35:01 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/23 20:37:21 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/23 22:52:53 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 #include <stdio.h>
 
-int	main(int ac, char **av)
+void	rmsp(char *s, int j)
+{
+	while (s[j + 1])
+	{
+		s[j] = s[j + 1];
+		j++;
+	}
+	s[j] = '\0';
+}
+
+void	removespaces(t_dict *dict)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (dict[i].len)
+	{
+		j = 0;
+		while (dict[i].str[j])
+		{
+			while (dict[i].str[j] == ' ' && dict[i].str[j + 1] == ' ')
+				rmsp(dict[i].str, j);
+			j++;
+		}
+		i++;
+	}
+}
+
+int		main(int ac, char **av)
 {
 	t_dict	*dict;
 	char	*s;
 
-	if (ac != 2)
+	s = ft_myatoi(av[ac == 3 ? 1 : ac - 1]);
+	dict = parse(ac == 3 ? av[2] : "numbers.dict");
+	if ((ac != 2 && ac != 3) || !s || !dict || !ft_checkparams(s))
 	{
 		ft_putstr("Error\n");
 		return (0);
 	}
-	if (!(s = ft_myatoi(av[1])))
-		return (0);
-	if (!ft_checkparams(ac, s))
-		return (0);
-	if (!(dict = parse("numbers.dict")))
-		return (0);
+	removespaces(dict);
 	sortdict(dict);
 	if (!ft_strcmp(s, "0"))
 		ft_putstr(dict[0].str);
@@ -38,6 +64,5 @@ int	main(int ac, char **av)
 		printnumber(s, ft_strlen(s), dict);
 	ft_putstr("\n");
 	ft_cleanmem(&dict);
-	printf("%p\n", dict[0].str);
 	return (0);
 }

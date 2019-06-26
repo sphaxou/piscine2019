@@ -6,7 +6,7 @@
 #    By: vgallois <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/11 17:57:56 by vgallois          #+#    #+#              #
-#    Updated: 2019/06/25 23:38:08 by vgallois         ###   ########.fr        #
+#    Updated: 2019/06/26 02:16:34 by vgallois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS			= $(shell ls | grep -E "ft_.+\.c") \
 				  printtab.c\
 				  splitint.c\
 				  readinput.c\
+				  assign_max_lim.c\
 				  main.c
 CC				= gcc
 FLAGS			= -Wall -Werror -Wextra

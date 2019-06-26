@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_params.c                              :+:      :+:    :+:   */
+/*   assign_max_lim.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/20 17:56:38 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/25 08:11:39 by vgallois         ###   ########.fr       */
+/*   Created: 2019/06/26 02:14:05 by vgallois          #+#    #+#             */
+/*   Updated: 2019/06/26 02:46:31 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "ft.h"
 
-t_list	*ft_list_push_params(int ac, char **av)
+int		assign_max_lim(int **map, t_max *max, int i, int j)
 {
-	int		i;
-	t_list	*start;
-	t_list	*list;
-
-	i = 1;
-	start = ft_create_elem(av[ac - i++]);
-	list = start;
-	while (ac - i >= 0)
+	max->value = 1;
+	if (max->value >= map[max->i][max->j])
 	{
-		list->next = ft_create_elem(av[ac - i++]);
-		list = list->next;
+		max->i = i;
+		max->j = j;
 	}
-	return (start);
+	return (1);
 }

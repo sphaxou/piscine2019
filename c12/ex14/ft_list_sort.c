@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 23:11:37 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/25 08:15:30 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/26 10:55:59 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	ft_list_sort(t_list **start, int (*cmp)())
 	t_list	*tmp;
 	t_list	*tmp2;
 
+	if (!(*start))
+		return ;
 	list = *start;
 	tmp = list->next;
 	list->next = NULL;

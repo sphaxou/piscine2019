@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 21:12:47 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/23 20:38:03 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/23 22:52:31 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char			*ft_mystrdup(char *src, char *sep);
 int				ft_strcmp(char *s1, char *s2);
 int				ft_str10cmp(char *s1, char *s2, int n);
 int				ft_abs(int a);
-int				ft_checkparams(int ac, char *str);
+int				ft_checkparams(char *str);
 char			*ft_myatoi(char *str);
 void			ft_cleanmem(t_dict **dict);
 

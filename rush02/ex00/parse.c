@@ -6,7 +6,7 @@
 /*   By: mciupek <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 13:25:09 by mciupek           #+#    #+#             */
-/*   Updated: 2019/06/23 21:51:52 by mciupek          ###   ########.fr       */
+/*   Updated: 2019/06/23 23:21:57 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ char	*ft_read(char *s)
 
 	len = 0;
 	fd = open(s, O_RDONLY);
+	if (fd == -1)
+		return (NULL);
 	while ((ret = read(fd, buff, BUF_SIZE)))
 		len = len + ret;
 	close(fd);
@@ -90,7 +92,7 @@ t_dict	*parse(char *s)
 	t_dict	*dict;
 
 	str = ft_read(s);
-	if (!(dict = init_dict(s)))
+	if (!str || !(dict = init_dict(s)))
 		return (0);
 	i = 0;
 	j = -1;
@@ -106,7 +108,7 @@ t_dict	*parse(char *s)
 		dict[j].str = ft_mystrdup(str + i, "\n");
 		i += ft_strlen(dict[j].str) + 1;
 	}
-	dict[j].len = 0;
+	dict[j + 1].len = 0;
 	free(str);
 	return (dict);
 }

@@ -6,14 +6,14 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 02:23:30 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/25 11:04:53 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/26 13:03:37 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 #include <stdlib.h>
 
-int	value(int **map, int i, int j)
+int		value(int **map, int i, int j)
 {
 	int		a;
 	int		b;
@@ -29,6 +29,17 @@ int	value(int **map, int i, int j)
 	return ((a < c ? a + 1 : c + 1));
 }
 
+void	assign_max(int **map, int i, int j, t_max *max)
+{
+	max->value = value(map, i, j);
+	map[i][j] = max->value;
+	if (max->value >= map[max->i][max->j])
+	{
+		max->i = i;
+		max->j = j;
+	}
+}
+
 void	solve(int **map, int h, int l, t_max *max)
 {
 	int		i;
@@ -39,25 +50,16 @@ void	solve(int **map, int h, int l, t_max *max)
 	max->j = l - 1;
 	while (i >= 0)
 	{
-		j = l - 1;
-		while (j >= 0)
+		j = l;
+		while (--j >= 0)
 		{
 			if (map[i][j] != -1)
 			{
 				if (i == h - 1 || j == l - 1)
-					map[i][j] = 1;
+					map[i][j] = assign_max_lim(map, max, i, j);
 				else
-				{
-					max->value = value(map, i, j);
-					map[i][j] = max->value;
-					if (max->value >= map[max->i][max->j])
-					{
-						max->i = i;
-						max->j = j;
-					}
-				}
+					assign_max(map, i, j, max);
 			}
-			j--;
 		}
 		i--;
 	}

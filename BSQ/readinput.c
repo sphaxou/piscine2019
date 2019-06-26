@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 19:34:26 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/26 00:20:01 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/26 15:23:38 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,27 @@ int		**parse_input(char *s, t_car *car, int *h, int *l)
 	int		navi;
 
 	link = 0;
-	if (!s || zelda(s, car) != 1)
+	if (!s || zelda(s, car, 0, 0) != 1 || !(car->h))
 	{
 		if (s)
 			ft_putstr_fd("map error\n", 2);
 		return (NULL);
 	}
-	*h = ft_atoi(s);
-	while (ft_is_num(s[link]))
+	*h = car->h;
+	while (s[link] && s[link] != '\n')
 		link++;
-	link = link + 4;
+	link = link + 1;
 	navi = link;
-	while (s[link++] != '\n')
+	while (s[link] && s[link] != '\n')
+	{
 		*l += 1;
+		link++;
+	}
 	map = splitint(s + navi, *car, *h, *l);
 	return (map);
 }
 
-int		bsq_input(char *s)
+void	bsq_input(char *s)
 {
 	int		**tab;
 	int		h;
@@ -75,13 +78,15 @@ int		bsq_input(char *s)
 	h = 0;
 	l = 0;
 	tab = parse_input(s, &car, &h, &l);
+	if (!h)
+		return ;
 	if (!tab)
-		return (0);
+		return ;
 	solve(tab, h, l, &max);
 	max.l = l;
 	max.h = h;
 	printtab(tab, car, max);
-	return (1);
+	return ;
 }
 
 int		readinput(void)
