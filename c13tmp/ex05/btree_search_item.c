@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   btree_search_item.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/07 15:25:38 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/27 12:49:34 by vgallois         ###   ########.fr       */
+/*   Created: 2019/06/24 05:39:28 by vgallois          #+#    #+#             */
+/*   Updated: 2019/06/25 01:49:27 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int			ft_strlcat(char *s1, char *s2, unsigned int n)
-{
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	k;
+#include "ft_btree.h"
+#include <stdlib.h>
 
-	i = 0;
-	j = 0;
-	k = 0;
-	while (s2[k])
-		k++;
-	while (s1[i] && i < n)
-		i++;
-	if (!n)
-		return (i + k);
-	while ((i + j) < (n - 1) && s2[j])
-	{
-		s1[i + j] = s2[j];
-		j++;
-	}
-	if (i < n)
-		s1[i + j] = '\0';
-	return (i + k);
+void	*btree_search_item(t_btree *root,
+		void *data, int (*cmpf)(void *, void *))
+{
+	void	*res;
+
+	if (!root)
+		return (NULL);
+	res = btree_search_item(root->left, data, cmpf);
+	if (res)
+		return (res);
+	if (cmpf(data, root->item) == 0)
+		return (root);
+	res = btree_search_item(root->right, data, cmpf);
+	return (res);
 }

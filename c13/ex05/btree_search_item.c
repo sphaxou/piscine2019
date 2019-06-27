@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 05:39:28 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/25 01:49:27 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/27 08:20:20 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*btree_search_item(t_btree *root,
 	if (res)
 		return (res);
 	if (cmpf(data, root->item) == 0)
-		return (root);
+		return (root->item);
 	res = btree_search_item(root->right, data, cmpf);
 	return (res);
 }

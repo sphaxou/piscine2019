@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   btree_insert_data.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/07 15:25:38 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/27 12:49:34 by vgallois         ###   ########.fr       */
+/*   Created: 2019/06/24 05:34:21 by vgallois          #+#    #+#             */
+/*   Updated: 2019/06/24 19:51:40 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int			ft_strlcat(char *s1, char *s2, unsigned int n)
-{
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	k;
+#include "ft_btree.h"
 
-	i = 0;
-	j = 0;
-	k = 0;
-	while (s2[k])
-		k++;
-	while (s1[i] && i < n)
-		i++;
-	if (!n)
-		return (i + k);
-	while ((i + j) < (n - 1) && s2[j])
+void	btree_insert_data(t_btree **root, void *item,
+		int (*cmpf)(void *, void *))
+{
+	if (!(*root))
 	{
-		s1[i + j] = s2[j];
-		j++;
+		*root = btree_create_node(item);
+		return ;
 	}
-	if (i < n)
-		s1[i + j] = '\0';
-	return (i + k);
+	if (cmpf((*root)->item, item) > 0)
+		btree_insert_data(&(*root)->left, item, cmpf);
+	else
+		btree_insert_data(&(*root)->right, item, cmpf);
 }

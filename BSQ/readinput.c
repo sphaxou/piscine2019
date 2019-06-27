@@ -6,12 +6,12 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 19:34:26 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/26 15:23:38 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/27 11:49:01 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
-#define BUFF_SIZE 50000
+#define BUFF_SIZE 5000000
 #include <stdlib.h>
 #include <unistd.h>
 

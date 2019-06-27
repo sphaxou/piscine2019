@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_btree.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/07 15:25:38 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/27 12:49:34 by vgallois         ###   ########.fr       */
+/*   Created: 2019/06/24 04:59:39 by vgallois          #+#    #+#             */
+/*   Updated: 2019/06/24 06:26:50 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int			ft_strlcat(char *s1, char *s2, unsigned int n)
-{
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	k;
+#ifndef FT_BTREE_H
+# define FT_BTREE_H
 
-	i = 0;
-	j = 0;
-	k = 0;
-	while (s2[k])
-		k++;
-	while (s1[i] && i < n)
-		i++;
-	if (!n)
-		return (i + k);
-	while ((i + j) < (n - 1) && s2[j])
-	{
-		s1[i + j] = s2[j];
-		j++;
-	}
-	if (i < n)
-		s1[i + j] = '\0';
-	return (i + k);
-}
+typedef struct	s_btree
+{
+	struct s_btree	*left;
+	struct s_btree	*right;
+	void			*item;
+}				t_btree;
+t_btree			*btree_create_node(void *data);
+
+#endif

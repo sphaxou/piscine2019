@@ -6,12 +6,12 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 02:29:28 by vgallois          #+#    #+#             */
-/*   Updated: 2019/06/26 15:27:47 by vgallois         ###   ########.fr       */
+/*   Updated: 2019/06/27 11:51:48 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
-#define BUFF_SIZE 50000
+#define BUFF_SIZE 500000
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -75,7 +75,7 @@ int		assign_car(char *s, t_car *car)
 	car->h = 0;
 	while (s[car->h] && s[car->h] != '\n')
 		car->h++;
-	if (car->h < 5)
+	if (car->h < 4)
 		return (0);
 	car->vide = s[car->h - 3];
 	car->obs = s[car->h - 2];
@@ -109,12 +109,12 @@ int		zelda(char *s, t_car *car, int l, int link)
 			h++;
 		}
 		if (!(s[link] == car->vide || s[link] == car->obs || s[link] == '\n'))
-			return (0);
+			return (3);
 		l++;
 		link++;
 	}
 	if (h != car->h)
-		return (0);
+		return (2);
 	return (1);
 }
 
